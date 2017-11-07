@@ -36,8 +36,8 @@
 
 <script>
 // step1:分解 mousedown mouseup mousemove mouseleave,并且分别监听
-// step2: 声明isDown作为判断
-// step3: 声明所需要的变量： startX
+// step2: 声明isDown作为判断 声明startX作为起始坐标
+// step3: 取mousedown中的起始坐标，作为划动的起点，
 const slider = document.querySelector('.items')
 let isDown = true
 let startX
@@ -61,9 +61,10 @@ slider.addEventListener('mouseleave', ()=>{
 })
 
 slider.addEventListener('mousemove', (e)=>{
-    if(!isDown)return
-    e.preventDefault();
-    const x = e.pageX - slider.offsetLeft
+    if(!isDown)return // 阻止划动事件发生
+    e.preventDefault();//取消默认事件
+    const x = e.pageX - slider.offsetLeft //取得每一次移动的绝对横坐标
+     //取得移动相对于起始点的距离，并赋值给scroll事件
     const walk = x - startX
     slider.scrollLeft = scrollLeft - walk
 })
