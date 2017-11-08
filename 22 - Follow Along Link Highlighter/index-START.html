@@ -26,10 +26,19 @@
     </div>
 
   <script>
-    const link = document.querySelectorAll('a')
-    const heighlight = document.createElement('span')
+  const triggers = document.querySelectorAll('a');
+  const highlight = document.createElement('span');
+  highlight.classList.add('highlight');
+  document.body.appendChild(highlight);
 
-    
+
+
+    function highlightLink(){
+      const linkCoords =  trigger.getBoundingClientRect()
+      console.log(linkCoords)
+    }
+    triggers.forEach(a => a.addEventListener('mouseenter', highlight))
+
   </script>
 </body>
 </html>
